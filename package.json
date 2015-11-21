@@ -1,0 +1,23 @@
+{
+  "name": "image-uploader-and-csv-generator",
+  "version": "0.0.0",
+  "description": "generate csvs and optionally upload images",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HackTheDinos/image-uploader-and-csv-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackTheDinos/image-uploader-and-csv-generator/issues"
+  },
+  "homepage": "https://github.com/HackTheDinos/image-uploader-and-csv-generator#readme",
+  "dependencies": {
+    "csv-stringify": "0.0.8"
+  }
+}
