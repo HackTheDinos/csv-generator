@@ -14,7 +14,7 @@ program
   .option('-y, --sourcey <n>', 'y location of the section of the source image', parseInt, 0)
   .option('-w, --sourcew <n>', 'width of the source image', parseInt, 0)
   .option('-h, --sourceh <n>', 'height of the source image', parseInt, 0)
-  .option('-f, --force', 'force overwriting of output file')
+  .option('-f, --force', 'force overwrite output file')
   .parse(process.argv);
 
 try {
