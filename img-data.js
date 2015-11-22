@@ -11,10 +11,10 @@ class Methods {
   static size (path) {
     let promise = new Promise(function (resolve, reject) {
       gm(path).size(function (err, val) {
-        console.log(err);
         if (err) {
           reject(err);
         } else {
+          val["path"] = path;
           resolve(val);
         }
       });
