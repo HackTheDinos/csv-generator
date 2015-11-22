@@ -1,11 +1,12 @@
 ## Installation
 
 1. You will need to have [nodejs](https://nodejs.org/en/) installed
-2. Clone the repository
+2. You also need to have [GraphicsMagick](http://www.graphicsmagick.org/) installed
+3. Clone the repository
   * `git clone git@github.com:HackTheDinos/csv-generator.git`
-3. Change directory into the repository
+4. Change directory into the repository
   * `cd csv-generator`
-4. Install the node modules
+5. Install the node modules
   * `npm install`
 
 ## Usage
