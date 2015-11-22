@@ -11,7 +11,7 @@ program
   .option('-i, --input <dir>', 'folder location of the images',
       path.resolve(__dirname, 'images'))
   .option('-o, --output <dir>', 'output location',
-      path.resolve(__dirname, 'groups.csv'))
+      path.resolve(__dirname, 'group_only_one_group.csv'))
   .option('-r, --rotation <n>', 'degree of rotation of the source image', parseInt, 0)
   .option('-x, --sourcex <n>', 'x location of the section of the source image', parseInt, 0)
   .option('-y, --sourcey <n>', 'y location of the section of the source image', parseInt, 0)

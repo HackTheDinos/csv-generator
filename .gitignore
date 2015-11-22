@@ -28,4 +28,4 @@ node_modules
 
 # local data
 images/
-groups.csv
+group_only_one_group.csv
