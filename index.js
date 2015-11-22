@@ -31,8 +31,9 @@ Promise.all(promises).then(values => {
   });
 }).then(values => {
   values.map((val, i) => {
-    // add the "order" key
-    val.unshift(i);
+    // add the "order", "file_path", "thumbnail", "caputure_uuid" keys
+    // val[0] == path to file
+    val.unshift(i, val[0], val[0], i);
     stringifier.write(val);
   });
 
@@ -41,6 +42,6 @@ Promise.all(promises).then(values => {
 });
 
 function transform(path, obj) {
-  // does not include "order" key
-  return [path, path, path, path, path, 0, obj.width, obj.height, 0, 0, obj.width, obj.height];
+  // does not include "order", "file_path", "thumbnail", or "caputure_uuid" keys
+  return [path, path, 0, obj.width, obj.height, 0, 0, obj.width, obj.height];
 }
