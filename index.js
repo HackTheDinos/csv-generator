@@ -7,6 +7,7 @@ var path = require('path');
 var img = require("./img-data");
 
 program
+  .option('-u, --url <url>', 'url prefix for the images (required)')
   .option('-i, --input <dir>', 'folder location of the images',
       path.resolve(__dirname, 'images'))
   .option('-o, --output <dir>', 'output location',
@@ -18,6 +19,21 @@ program
   .option('-h, --sourceh <n>', 'height of the source image', parseInt, 0)
   .option('-f, --force', 'force overwrite output file')
   .parse(process.argv);
+
+if (!program.url) {
+  console.log('url prefix for the images is required');
+  process.exit(1);
+}
+
+// ensure url prefix starts with http(s)://
+if (!/^(f|ht)tps?:\/\//i.test(program.url)) {
+  program.url = 'http://' + program.url;
+}
+
+// ensure url prefix has a trailing slash
+if (program.url[program.url.length -1] !== "/") {
+  program.url += "/";
+}
 
 try {
   fs.statSync(program.input);
@@ -72,7 +88,7 @@ var promises = contents.map(function(loc) {
 // resolve image metadata
 Promise.all(promises).then(values => {
   return values.map(val => {
-    return transform(val.path, val);
+    return transform(program.url + path.basename(val.path), val);
   });
 }).then(values => {
   values.map((val, i) => {
