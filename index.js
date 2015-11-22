@@ -1,6 +1,8 @@
 var stringify = require('csv-stringify');
 var fs = require('fs');
 var output = fs.createWriteStream('testing.csv');
+var img = require("./img-data");
+var absPath = __dirname + '/images/';
 
 stringifier = stringify();
 stringifier.on('readable', function(){
@@ -18,9 +20,27 @@ stringifier.on('finish', function(){
 // write headers first
 stringifier.write(['order', 'file_path', 'thumbnail', 'capture_uuid', 'page_uri', 'book_uri', 'source_rotated', 'width', 'height', 'source_x', 'source_y', 'source_w' ,'source_h']);
 
-// load all images, parse, and write info
-// TODO implement this part
+var contents = fs.readdirSync(absPath);
+var promises = contents.map(function(path) {
+  return img.size(absPath + path);
+});
 
+Promise.all(promises).then(values => {
+  return values.map(val => {
+    return transform(val.path, val);
+  });
+}).then(values => {
+  values.map((val, i) => {
+    // add the "order" key
+    val.unshift(i);
+    stringifier.write(val);
+  });
 
-// done
-stringifier.end();
+  // done
+  stringifier.end();
+});
+
+function transform(path, obj) {
+  // does not include "order" key
+  return [path, path, path, path, path, 0, obj.width, obj.height, 0, 0, obj.width, obj.height];
+}
