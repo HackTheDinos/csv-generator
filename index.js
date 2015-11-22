@@ -1,3 +1,5 @@
+'use strict';
+
 var stringify = require('csv-stringify');
 var fs = require('fs');
 var program = require('commander');
@@ -45,6 +47,7 @@ var output = fs.createWriteStream(program.output);
 // setup csv stringifier
 var stringifier = stringify();
 stringifier.on('readable', function(){
+  var data;
   while(data = stringifier.read()) {
     output.write(data);
   }
