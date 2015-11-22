@@ -22,6 +22,7 @@ Usage: index [options]
 Options:
 
   -h, --help          output usage information
+  -u, --url <url>     url prefix for the images (required)
   -i, --input <dir>   folder location of the images
   -o, --output <dir>  output location
   -r, --rotation <n>  degree of rotation of the source image
@@ -36,11 +37,11 @@ Options:
 
 Images at `./images`, output to `./groups.csv`:
 
-`node index`
+`node index -u example.com`
 
 Images at `../my/project/images`, output to `../my/project/output.csv`:
 
-`node index -i ../my/project/images -o ../my/project/output.csv`
+`node index -u example.com -i ../my/project/images -o ../my/project/output.csv`
 
 ## Notes
 
